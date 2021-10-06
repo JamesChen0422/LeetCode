@@ -1,5 +1,5 @@
 
-int* rotate(int* nums, int numsSize, int k){
+void rotate(int* nums, int numsSize, int k){
     int* ans = malloc(sizeof(int)*numsSize);
     
     if(numsSize<2)
