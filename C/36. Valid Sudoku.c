@@ -22,14 +22,13 @@ bool isValidSudoku(char** board, int boardSize, int* boardColSize){
              
              int cnt=0;
              for(int sub_row=0; sub_row<3; sub_row++){
-                 for(int sub_col=0; sub_col<3; sub_col++){
-                    if(board[sub_row+i-i%3][sub_col+j-j%3]==temp)
-                        cnt++;
-                    if(cnt>1)
-                        return false;  
-                 }
-             }             
-         }       
+                for(int sub_col=0; sub_col<3; sub_col++){
+                    if((sub_row+i-i%3) != i && (sub_col+j-j%3) != j)
+                        if(board[sub_row+i-i%3][sub_col+j-j%3]==temp)
+                            return false;
+                }
+            }             
+        }       
     }
     
     return true;
