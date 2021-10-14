@@ -16,15 +16,15 @@ bool hasCycle(struct ListNode *head) {
     
     while(temp!=temp2)
     {
-        if(temp2==NULL)
-        {
+        if(temp2==NULL || temp2->next==NULL)
             return false;
-        }
+       
         temp=temp->next;
-        if(temp2->next && temp2->next->next)
+        
+        if(temp2->next->next)
             temp2=temp2->next->next;
         else
-            temp2 = temp2->next;
+            return false;
     }
     
     return true;
