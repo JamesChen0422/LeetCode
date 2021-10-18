@@ -6,39 +6,50 @@
  *     struct TreeNode *right;
  * };
  */
-int layer(struct TreeNode* root){
-    if(root)
-        return layer(root->left)>layer(root->right) ? (layer(root->left)+1) : (layer(root->right)+1);
-    else
-        return 0;
-}
 
-
-void Traversal(struct TreeNode* root, int** ans, layer){
-    if(root){
-
-    }
-
-}
 
 /**
  * Return an array of arrays of size *returnSize.
  * The sizes of the arrays are returned as *returnColumnSizes array.
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
-int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes){
-    if(!root)
-        return root;
+int maxDepth(struct TreeNode* root){
+    if(root){
+        int left, right;
+        left = maxDepth(root->left);
+        right = maxDepth(root->right);
+        return left>right ? left+1 : right+1;
+    } else 
+        return 0;
+}
+
+void Traversal(struct TreeNode* root, int layer, int** ans, int* returnColumnSizes){
+    if(root==NULL)
+        return;
     
-    *returnSize = layer(root);
-    int** ans = (int**)malloc(*returnSize * sizeof(int*);
-    int layer_cnt=1;                          
-    for(int i=0; i<layer){
-        *(*returnColumnSizes+i) = malloc(layer_cnt * sizeof(int));
-        layer_cnt*=2;
+    ans[layer][returnColumnSizes[layer]] = root->val;
+    returnColumnSizes[layer]++;
+    
+    Traversal(root->left, layer+1, ans, returnColumnSizes);
+    Traversal(root->right, layer+1, ans, returnColumnSizes);
+}
+
+int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes){
+    int layer = maxDepth(root);
+    int** ans = malloc(layer * sizeof(int*));
+    *returnSize = layer;
+    
+    for(int i=0; i<layer; i++){
+        if(i<31)
+            ans[i] = malloc((1<<i) * sizeof(int));
+        else
+            ans[i] = malloc(256 * sizeof(int));
     }
     
-    Traversal(root, ans, 0, 0);
-        
+    (*returnColumnSizes) = calloc(layer, sizeof(int));
+    
+    Traversal(root, 0, ans, (*returnColumnSizes));
+    
+    
     return ans;
 }
