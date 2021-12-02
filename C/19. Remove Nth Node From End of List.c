@@ -35,6 +35,6 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
             head = head->next;
         }
     }
-out:  
+    
     return ans;
 }
