@@ -16,17 +16,17 @@ int fib(int n){
 
 
 int fib(int n){
-    int* trib = (int*)malloc(3 * sizeof(int));
-    trib[0]=0, trib[1]=1, trib[2]=1;
+    int* fib = (int*)malloc(3 * sizeof(int));
+    fib[0]=0, fib[1]=1, fib[2]=1;
     
     if(n<3)
-        return trib[n];
+        return fib[n];
     
     for(int i=2; i<=n; i++){
-        trib[2]=trib[0]+trib[1];
-        trib[0]=trib[1];
-        trib[1]=trib[2];
+        fib[2]=fib[0]+fib[1];
+        fib[0]=fib[1];
+        fib[1]=fib[2];
     }
     
-    return trib[2];
+    return fib[2];
 }
