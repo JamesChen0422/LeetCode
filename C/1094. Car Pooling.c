@@ -22,8 +22,6 @@ bool carPooling(int** trips, int tripsSize, int* tripsColSize, int capacity){
 ===============================================================
 
 
-
-
 bool carPooling(int** trips, int tripsSize, int* tripsColSize, int capacity){
     int map[1001] = {0};
 
