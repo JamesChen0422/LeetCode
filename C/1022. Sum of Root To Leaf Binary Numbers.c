@@ -11,7 +11,7 @@ int sum(struct TreeNode* root, int num){
         return 0;
     }
     
-    num = (num << 1) + root->val;
+    num = (num << 1) | root->val;
     
     if(!root->right && !root->left)
         return num;
