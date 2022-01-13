@@ -1,7 +1,7 @@
 int cmp(const void *a, const void *b)
 {
-    int  x = (*(int **)a)[0][1];
-    int  y = (*(int **)b)[0][1];
+    int  x = ((int **)a)[0][1];
+    int  y = ((int **)b)[0][1];
     if(x > y)
         return 1;
     else if(x < y)
